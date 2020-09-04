@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.hornhuang.encryption.ui.home.HomeFragment"
+        android:name="com.hornhuang.encryption.ui.decode.HomeFragment"
         android:label="@string/title_decode"
         tools:layout="@layout/fragment_home" />
 

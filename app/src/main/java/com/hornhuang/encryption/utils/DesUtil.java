@@ -23,32 +23,26 @@ public class DesUtil {
 
     private final static String DES = "DES";
     private final static String ENCODE = "GBK";
-    private final static String defaultKey = "hornhuang7938";
 
-    static String data = "GHEubSlGHfwWJnzmZ0v4nry/Xuoh9PluwmfKkZHrXvCQ6Q1h/6tCvGDTGa5BReoCnQnHZKPK3mCoR20KE6MqSJ0Jx2Sjyt5gcJrC0aFQKLjld3dqFzSk4jIBkiabnqcJFVRZoYO4kFGOsp/htlL+G/JH/J5oAWjO5EVSKWdW/fjX57Mp5OySzwsNRAhUfgIGL8kNxDgYp1Ce6Kh3iHPoSV72pvz9ykBc+sUkhRkVPV3iuFZ+/o4Hq8U21CofbpPo";
+    static String data = "";
 
     private DesUtil(String data) {
         this.data = data;
     }
 
-    public String encode() {
+    public String encode(String key) {
         try {
-            return encrypt(data);
-//			new FileUtil().writeFile(encrypt(data));
+            return encrypt(key);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return "";
     }
 
-    public String decode() {
+    public String decode(String key) {
         try {
-//    		System.out.println(data);
-            return decrypt(data);
-//			new FileUtil().writeFile(decrypt(data));
+            return decrypt(key);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return "";
@@ -61,8 +55,8 @@ public class DesUtil {
      * @author lifq
      * @date 2015-3-17 下午02:46:43
      */
-    private String encrypt(String data) throws Exception {
-        byte[] bt = encrypt(data.getBytes(ENCODE), defaultKey.getBytes(ENCODE));
+    private String encrypt(String key) throws Exception {
+        byte[] bt = encrypt(data.getBytes(ENCODE), key.getBytes(ENCODE));
         Encoder encoder = Base64.getEncoder();
         String strs = encoder.encodeToString(bt);
         return strs;
@@ -75,12 +69,12 @@ public class DesUtil {
      * @author lifq
      * @date 2015-3-17 下午02:49:52
      */
-    private String decrypt(String data) throws IOException, Exception {
+    private String decrypt(String key) throws IOException, Exception {
         if (data == null)
             return null;
         Decoder decoder = Base64.getDecoder();
         byte[] buf = decoder.decode(data);
-        byte[] bt = decrypt(buf, defaultKey.getBytes(ENCODE));
+        byte[] bt = decrypt(buf, key.getBytes(ENCODE));
         return new String(bt, ENCODE);
     }
 

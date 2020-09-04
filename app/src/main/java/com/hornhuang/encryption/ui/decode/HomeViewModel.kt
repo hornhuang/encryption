@@ -1,4 +1,4 @@
-package com.hornhuang.encryption.ui.home
+package com.hornhuang.encryption.ui.decode
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

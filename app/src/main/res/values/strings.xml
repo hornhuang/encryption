@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">encryption</string>
+    <string name="app_name">云密</string>
     <string name="title_encode">加密</string>
     <string name="title_decode">解密</string>
     <string name="title_notifications">其他</string>
+
+    <string name="key_hint">请输入密钥，进行加解密</string>
+    <string name="encode_hint">请输入明文/密文，进行加解密</string>
 </resources>
