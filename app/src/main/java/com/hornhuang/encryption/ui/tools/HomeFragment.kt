@@ -1,4 +1,4 @@
-package com.hornhuang.encryption.ui.decode
+package com.hornhuang.encryption.ui.tools
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.hornhuang.encryption.R
 import android.widget.ImageView
-import com.hornhuang.encryption.module.base.BaseActivity
+import com.hornhuang.encryption.module.base.activity.BaseActivity
+import com.hornhuang.encryption.module.base.click.ClickProxy
 import com.hornhuang.encryption.module.home.EncodeActivity
+import com.hornhuang.encryption.ui.webview.EncWebViewActivity
 
 
 class HomeFragment : Fragment(),View.OnClickListener {
@@ -19,7 +21,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
     private lateinit var homeViewModel: HomeViewModel
 
-    private lateinit var mEncodeBtn : ImageView;
+    private lateinit var mEncodeImg : ImageView
+    private lateinit var mHushenImg : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +35,17 @@ class HomeFragment : Fragment(),View.OnClickListener {
     }
 
     private fun init(root: View) {
+        mEncodeImg = root.findViewById(R.id.encode_img)
+        mHushenImg = root.findViewById(R.id.hushen300_img)
+
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        mEncodeBtn = root.findViewById(R.id.encode_img)
         homeViewModel.text.observe(this, Observer {
             //            decodeEdit.text = it
         })
 
-        mEncodeBtn.setOnClickListener(this)
+        mEncodeImg.setOnClickListener(ClickProxy(this))
+        mHushenImg.setOnClickListener(ClickProxy(this))
     }
 
     override fun onClick(v: View?) {
@@ -47,11 +53,16 @@ class HomeFragment : Fragment(),View.OnClickListener {
             return
         }
         when (v.id) {
-            R.id.encode_img -> encode()
+            R.id.encode_img  -> encode()
+            R.id.hushen300_img -> hushen300()
         }
     }
 
     fun encode() {
         EncodeActivity.actionStart(activity as BaseActivity)
+    }
+
+    fun hushen300() {
+        EncWebViewActivity.actionStart(activity as BaseActivity, "https://androidinvest.com/ChinaIndicesPE/SH000300/")
     }
 }

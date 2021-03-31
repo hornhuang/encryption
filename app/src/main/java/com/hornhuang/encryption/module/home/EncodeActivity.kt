@@ -11,8 +11,8 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProviders
 import com.getbase.floatingactionbutton.FloatingActionButton
 import com.hornhuang.encryption.R
-import com.hornhuang.encryption.module.base.BaseActivity
-import com.hornhuang.encryption.ui.decode.HomeViewModel
+import com.hornhuang.encryption.module.base.activity.BaseActivity
+import com.hornhuang.encryption.ui.tools.HomeViewModel
 import com.hornhuang.encryption.utils.DesUtil
 
 class EncodeActivity : BaseActivity(), View.OnClickListener {
@@ -41,6 +41,9 @@ class EncodeActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_encode)
+
+        supportActionBar?.title = "加密/解密"
+
         init()
     }
 

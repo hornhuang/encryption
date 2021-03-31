@@ -1,2 +1,13 @@
 include ':app'
 rootProject.name='encryption'
+
+// flutter module :: Include the host app project.
+// https://flutter.cn/docs/development/add-to-app/android/project-setup
+setBinding(new Binding([gradle: this]))                                // new
+evaluate(new File(                                                     // new
+        settingsDir.parentFile,                                              // new
+        'knapsack_flutter_proj/.android/include_flutter.groovy'                         // new
+))                                                                     // new
+
+include ':knapsack_flutter_proj'
+project(':knapsack_flutter_proj').projectDir = new File('../knapsack_flutter_proj')

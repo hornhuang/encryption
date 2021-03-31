@@ -6,13 +6,25 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.hornhuang.encryption.module.base.BaseActivity
+import com.hornhuang.encryption.module.base.activity.BaseActivity
+import java.lang.ref.SoftReference
 
 class MainActivity : BaseActivity() {
+
+    companion object {
+        lateinit var sRef : SoftReference<MainActivity>
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        sRef = SoftReference(this)
+
+        initNav()
+    }
+
+    fun initNav() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
