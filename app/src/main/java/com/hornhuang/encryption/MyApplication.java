@@ -2,7 +2,7 @@ package com.hornhuang.encryption;
 
 import android.app.Application;
 
-import com.hornhuang.encryption.flutter.EngineHelper;
+import com.hornhuang.encryption.utils.EngineHelper;
 
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterEngineCache;
@@ -31,6 +31,7 @@ public class MyApplication extends Application {
         FlutterEngineCache
                 .getInstance()
                 .put(EngineHelper.engineName, flutterEngine);
+
     }
 
     /**

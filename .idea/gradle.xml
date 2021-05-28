@@ -11,8 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/../knapsack_flutter_proj" />
-            <option value="$PROJECT_DIR$/../knapsack_flutter_proj/.android/Flutter" />
+            <option value="$PROJECT_DIR$/../encryption_proj_flutter" />
+            <option value="$PROJECT_DIR$/../encryption_proj_flutter/.android/Flutter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
