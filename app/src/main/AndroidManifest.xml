@@ -15,8 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.webview.EncWebViewActivity"></activity>
-        <activity android:name=".flutter.EncFlutterActivity" />
+        <activity android:name=".ui.webview.EncWebViewActivity" />
         <activity android:name=".module.home.EncodeActivity" />
         <activity
             android:name=".MainActivity"
@@ -32,9 +31,10 @@
             android:name="io.flutter.embedding.android.FlutterActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AnimActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".flutter.FlutterAppActivity" />
+        <activity android:name=".flutter.FlutterAppActivity"
+            android:theme="@style/AnimActivity" />
     </application>
 
 </manifest>
