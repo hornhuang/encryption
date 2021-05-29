@@ -14,7 +14,7 @@ import io.flutter.embedding.engine.dart.DartExecutor;
  */
 public class MyApplication extends Application {
 
-    private FlutterEngine flutterEngine;
+    static private FlutterEngine flutterEngine;
 
     @Override
     public void onCreate() {
@@ -42,5 +42,9 @@ public class MyApplication extends Application {
         //销毁flutter引擎
         flutterEngine.destroy();
         super.onTerminate();
+    }
+
+    static public FlutterEngine getFlutterEngine() {
+        return flutterEngine;
     }
 }

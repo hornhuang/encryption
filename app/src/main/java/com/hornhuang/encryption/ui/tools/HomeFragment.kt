@@ -1,18 +1,21 @@
 package com.hornhuang.encryption.ui.tools
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.gson.Gson
 import com.hornhuang.encryption.R
-import android.widget.ImageView
+import com.hornhuang.encryption.flutter.FlutterAppActivity
 import com.hornhuang.encryption.module.base.activity.BaseActivity
-import com.hornhuang.encryption.module.base.click.ClickProxy
 import com.hornhuang.encryption.module.home.EncodeActivity
-import com.hornhuang.encryption.ui.webview.EncWebViewActivity
+import io.flutter.plugin.common.BasicMessageChannel
+import java.util.*
 
 
 class HomeFragment : Fragment(),View.OnClickListener {
@@ -44,8 +47,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
             //            decodeEdit.text = it
         })
 
-        mEncodeImg.setOnClickListener(ClickProxy(this))
-        mHushenImg.setOnClickListener(ClickProxy(this))
+        mEncodeImg.setOnClickListener(this)
+        mHushenImg.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -63,6 +66,25 @@ class HomeFragment : Fragment(),View.OnClickListener {
     }
 
     fun hushen300() {
-        EncWebViewActivity.actionStart(activity as BaseActivity, "https://androidinvest.com/ChinaIndicesPE/SH000300/")
+        if (context != null) {
+            //2.向Flutter端发送消息
+            //2.向Flutter端发送消息
+            val params: MutableMap<String, String> =
+                HashMap()
+            params["url"] = "https://androidinvest.com/ChinaIndicesPE/SH000300/"
+            params["route"] = "WebView"
+//            //2.向Flutter端发送消息
+//            //2.向Flutter端发送消息
+//            basicMessageChannelPlugin.send(
+//                Gson().newBuilder().create().toJson(params),
+//                BasicMessageChannel.Reply<String> { message: String? ->
+//                    Log.i(
+//                        TAG,
+//                        "收到Flutter的消息回复：\$message"
+//                    )
+//                }
+//            )
+            FlutterAppActivity.start(context!!, Gson().newBuilder().create().toJson(params), 1)
+        }
     }
 }

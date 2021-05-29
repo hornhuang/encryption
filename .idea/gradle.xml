@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/../encryption_proj_flutter" />
             <option value="$PROJECT_DIR$/../encryption_proj_flutter/.android/Flutter" />
+            <option value="$USER_HOME$/flutter/sdk/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-2.0.8/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
