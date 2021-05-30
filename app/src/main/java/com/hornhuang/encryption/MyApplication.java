@@ -21,7 +21,8 @@ public class MyApplication extends Application {
         super.onCreate();
         // Instantiate a FlutterEngine.
         flutterEngine = new FlutterEngine(this);
-
+        // Configure an initial route.
+        flutterEngine.getNavigationChannel().setInitialRoute("/");
         // Start executing Dart code to pre-warm the FlutterEngine.
         flutterEngine.getDartExecutor().executeDartEntrypoint(
                 DartExecutor.DartEntrypoint.createDefault()

@@ -68,22 +68,10 @@ class HomeFragment : Fragment(),View.OnClickListener {
     fun hushen300() {
         if (context != null) {
             //2.向Flutter端发送消息
-            //2.向Flutter端发送消息
             val params: MutableMap<String, String> =
                 HashMap()
             params["url"] = "https://androidinvest.com/ChinaIndicesPE/SH000300/"
             params["route"] = "WebView"
-//            //2.向Flutter端发送消息
-//            //2.向Flutter端发送消息
-//            basicMessageChannelPlugin.send(
-//                Gson().newBuilder().create().toJson(params),
-//                BasicMessageChannel.Reply<String> { message: String? ->
-//                    Log.i(
-//                        TAG,
-//                        "收到Flutter的消息回复：\$message"
-//                    )
-//                }
-//            )
             FlutterAppActivity.start(context!!, Gson().newBuilder().create().toJson(params), 1)
         }
     }
