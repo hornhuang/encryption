@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.google.gson.Gson;
 import com.hornhuang.encryption.flutter.message.BasicMessageChannelPlugin;
 import com.hornhuang.encryption.flutter.message.IShowMessage;
+import com.hornhuang.encryption.utils.EngineHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,8 @@ public class FlutterAppActivity extends FlutterActivity implements IShowMessage 
     private BasicMessageChannelPlugin basicMessageChannelPlugin;
 
     public final static String INIT_PARAMS = "initParams";
+
+    String mInitParam;
     /**
      * 0 给Flutter传递初始化数据
      * 1 使用BasicMsgChannel传递数据
@@ -38,12 +41,12 @@ public class FlutterAppActivity extends FlutterActivity implements IShowMessage 
 
     public static void start(Context context, String initParams, int type) {
         mtype = type;
+//        Intent intent = FlutterAppActivity.withCachedEngine(EngineHelper.engineName).build(context);
         Intent intent = new Intent(context, FlutterAppActivity.class);
         intent.putExtra(INIT_PARAMS, initParams);
         context.startActivity(intent);
     }
 
-    String mInitParam;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,23 +83,16 @@ public class FlutterAppActivity extends FlutterActivity implements IShowMessage 
         }
     }
 
-    /**
-     * 传递初始化参数给Flutter
-     * @return
-     */
-//    @NonNull
-//    @Override
-//    public String getInitialRoute() {
-//        return mInitParam == null ? super.getInitialRoute() : mInitParam;
-//    }
+    @Nullable
+    @Override
+    public String getCachedEngineId() {
+        return EngineHelper.engineName;
+    }
 
-//         使用在MyApplication预先初始化好的Flutter引擎以提升Flutter页面打开速度，
-//         注意：在这种模式下会导致getInitialRoute 不被调用所以无法设置初始化参数
-//        @Override
-//        public String getCachedEngineId() {
-//            return App.ENG_INED;
-//        }
-
+    @Override
+    public String getInitialRoute() {
+        return mInitParam == null ? super.getInitialRoute() : mInitParam;
+    }
 
     @Override
     public void sendMessage(String message) {
