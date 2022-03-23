@@ -6,4 +6,10 @@
 
     <string name="key_hint">请输入密钥，进行加解密</string>
     <string name="encode_hint">请输入明文/密文，进行加解密</string>
+    <string name="title_activity_text_speech">TextSpeechActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>

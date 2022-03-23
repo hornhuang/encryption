@@ -1,4 +1,4 @@
-package com.hornhuang.encryption.module.home
+package com.hornhuang.encryption.module.home.encode
 
 import android.app.Activity
 import android.content.ClipData
@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.getbase.floatingactionbutton.FloatingActionButton
 import com.hornhuang.encryption.R
 import com.hornhuang.encryption.module.base.activity.BaseActivity
-import com.hornhuang.encryption.ui.tools.HomeViewModel
+import com.hornhuang.encryption.module.home.HomeViewModel
 import com.hornhuang.encryption.utils.DesUtil
 
 class EncodeActivity : BaseActivity(), View.OnClickListener {

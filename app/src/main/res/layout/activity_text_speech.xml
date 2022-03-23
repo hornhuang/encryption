@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".module.home.speech.TextSpeechActivity"
+    tools:deviceIds="wear">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/inner_frame_layout_padding" >
+
+        <EditText
+            android:id="@+id/input_speech"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入朗读的内容"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="音调：0.00"/>
+
+            <SeekBar
+                android:id="@+id/tone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/text1"
+                android:maxHeight="2dp"
+                android:minHeight="2dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="12dp"
+                android:max="200"
+                android:paddingRight="12dp"
+                android:paddingTop="3dp"
+                android:progressDrawable="@drawable/layer_progress"
+                android:thumb="@drawable/shape_circle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/speed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="语速：0.00" />
+
+            <SeekBar
+                android:id="@+id/speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/text1"
+                android:maxHeight="2dp"
+                android:minHeight="2dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="12dp"
+                android:max="200"
+                android:paddingRight="12dp"
+                android:paddingTop="3dp"
+                android:progressDrawable="@drawable/layer_progress"
+                android:thumb="@drawable/shape_circle" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/input_save_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="未知666"
+            android:hint="文件保存地址"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/speak"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="播放" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="保存" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</androidx.wear.widget.BoxInsetLayout>

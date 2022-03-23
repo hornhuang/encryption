@@ -1,7 +1,6 @@
-package com.hornhuang.encryption.ui.tools
+package com.hornhuang.encryption.module.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,9 @@ import com.google.gson.Gson
 import com.hornhuang.encryption.R
 import com.hornhuang.encryption.flutter.FlutterAppActivity
 import com.hornhuang.encryption.module.base.activity.BaseActivity
-import com.hornhuang.encryption.module.home.EncodeActivity
-import io.flutter.plugin.common.BasicMessageChannel
+import com.hornhuang.encryption.module.home.encode.EncodeActivity
+import com.hornhuang.encryption.module.home.encode.EncodeActivity.Companion.actionStart
+import com.hornhuang.encryption.module.home.speech.TextSpeechActivity
 import java.util.*
 
 
@@ -26,6 +26,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
     private lateinit var mEncodeImg : ImageView
     private lateinit var mHushenImg : ImageView
+    private lateinit var mRandomImg : ImageView
+    private lateinit var mSpeechImg : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +42,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
     private fun init(root: View) {
         mEncodeImg = root.findViewById(R.id.encode_img)
         mHushenImg = root.findViewById(R.id.hushen300_img)
+        mRandomImg = root.findViewById(R.id.random)
+        mSpeechImg = root.findViewById(R.id.speech)
 
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
@@ -49,6 +53,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
         mEncodeImg.setOnClickListener(this)
         mHushenImg.setOnClickListener(this)
+        mRandomImg.setOnClickListener(this)
+        mSpeechImg.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -58,6 +64,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
         when (v.id) {
             R.id.encode_img  -> encode()
             R.id.hushen300_img -> hushen300()
+            R.id.random -> random()
+            R.id.speech -> speech()
         }
     }
 
@@ -67,12 +75,24 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
     fun hushen300() {
         if (context != null) {
-            //2.向Flutter端发送消息
             val params: MutableMap<String, String> =
                 HashMap()
             params["url"] = "https://androidinvest.com/ChinaIndicesPE/SH000300/"
             params["route"] = "WebView"
             FlutterAppActivity.start(context!!, Gson().newBuilder().create().toJson(params), 1)
         }
+    }
+
+    fun random() {
+        if (context != null) {
+            val params: MutableMap<String, String> =
+                HashMap()
+            params["route"] = "random"
+            FlutterAppActivity.start(context!!, Gson().newBuilder().create().toJson(params), 1)
+        }
+    }
+
+    fun speech() {
+        TextSpeechActivity.actionStart(activity as BaseActivity)
     }
 }

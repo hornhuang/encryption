@@ -1,4 +1,4 @@
-package com.hornhuang.encryption.ui.tools
+package com.hornhuang.encryption.module.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

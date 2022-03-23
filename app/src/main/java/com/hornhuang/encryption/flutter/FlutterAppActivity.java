@@ -90,11 +90,6 @@ public class FlutterAppActivity extends FlutterActivity implements IShowMessage 
     }
 
     @Override
-    public String getInitialRoute() {
-        return mInitParam == null ? super.getInitialRoute() : mInitParam;
-    }
-
-    @Override
     public void sendMessage(String message) {
         Log.i(TAG, "sendMessage :: " + message);
         if (basicMessageChannelPlugin == null) {
